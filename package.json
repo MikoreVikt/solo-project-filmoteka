@@ -1,11 +1,11 @@
 {
-  "name": "team-project-filmoteka-solo",
+  "name": "solo-project-filmoteka",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://MikoreVikt.github.io/team-project-filmoteka-solo",
+  "homepage": "https://MikoreVikt.github.io/solo-project-filmoteka",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /team-project-filmoteka-solo/"
+    "build": "parcel build src/*.html --public-url /solo-project-filmoteka/"
   },
   "repository": {
     "type": "git",
