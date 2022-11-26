@@ -1,1 +1,1 @@
-# team-project-filmoteka-solo
+# solo-project-filmoteka
