@@ -1,54 +1,73 @@
 .header-home {
-    @media screen and(max-width: $mobile) {
-        width: 320px;
+    @media screen and(max-width: $tablet) {
+        // width: 320px;
         height: 230px;
         padding-top: 40px;
         padding-bottom: 92px;
+        background-size: cover;
+        background-repeat: no-repeat;
         background-image: url("../images/header-home_320.png");
     }
 
 }
 
 .links-frame {
-    @media screen and(max-width: $mobile) {
+    @media screen and(max-width: $tablet) {
         display: flex;
         align-items: center;
-        margin-bottom: 52px;
+        justify-content: space-between;
+        margin-bottom: 54px;
     }
     
 }
 
 .header-logo {
-    @media screen and(max-width: $mobile) {
-        margin-right: 112px;
+    @media screen and(max-width: $tablet) {
         width: 24px;
         height: 24px;
     }
 }
 
-.home-link {
-    @media screen and(max-width: $mobile) {
+.header__links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    color: var(--white-color);
+    text-transform: uppercase;
+
+    @media screen and(max-width: $tablet) {
         font-size: 12px;
         line-height: 14px;
-        margin-right: 40px;
-        color: var(--white-color);
-        text-transform: uppercase;
     }
-    
 }
 
-.library-link {
-    @media screen and(max-width: $mobile) {
-        font-size: 11px;
-        line-height: 14px;
-        color: var(--white-color);
-        text-transform: uppercase;
-    }
+// .header-link {
+    
+    
+// }
 
+.header-link:hover,
+.header-link:focus {
+    color: var(--red-color);
+}
+
+.current {
+    position: relative;
+}
+
+.current::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--red-color);
 }
 
 .search-frame {
-    @media screen and(max-width: $mobile) {
+    @media screen and(max-width: $tablet) {
         display: flex;
         align-items: center;
     }
@@ -56,14 +75,15 @@
 }
 
 .search-frame label {
-    @media screen and(max-width: $mobile) {
+    @media screen and(max-width: $tablet) {
         position: relative;
         width: 100%;
     }
 }
 
 .search-input {
-    @media screen and(max-width: $mobile) {
+    cursor: pointer;
+    @media screen and(max-width: $tablet) {
         font-size: 14px;
         width: 100%;
         color: var(--white-color);
@@ -79,22 +99,28 @@
 }
 
 .search-btn {
-    @media screen and(max-width: $mobile) {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    transition: transform 1s cubic-bezier(.4, 0, .2, 1);
+
+    @media screen and(max-width: $tablet) {
         width: 12px;
         height: 12px;
-        background-color: transparent;
     }
 }
 
 .search-icon {
-    @media screen and(max-width: $mobile) {
-    }
+    cursor: pointer;
+    transition: transform 1s cubic-bezier(.4, 0, .2, 1);
 }
 
+.search-icon:hover,
+.search-icon:focus {
+    transform: scale(1.5) rotate(360deg);
+}
