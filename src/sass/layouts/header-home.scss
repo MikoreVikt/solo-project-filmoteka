@@ -1,44 +1,36 @@
 .header-home {
-    @media screen and(max-width: $tablet) {
-        // width: 320px;
         height: 230px;
         padding-top: 40px;
         padding-bottom: 92px;
         background-size: cover;
         background-repeat: no-repeat;
         background-image: url("../images/header-home_320.png");
-    }
 
+        // @media  and(min-width: $tablet) {
+            
+        // }
 }
 
 .links-frame {
-    @media screen and(max-width: $tablet) {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 54px;
-    }
-    
 }
 
 .header-logo {
-    @media screen and(max-width: $tablet) {
         width: 24px;
         height: 24px;
-    }
 }
 
 .header__links {
     display: flex;
     align-items: center;
+    font-size: 12px;
+    line-height: 14px;
     gap: 40px;
     color: var(--white-color);
     text-transform: uppercase;
-
-    @media screen and(max-width: $tablet) {
-        font-size: 12px;
-        line-height: 14px;
-    }
 }
 
 // .header-link {
@@ -67,31 +59,24 @@
 }
 
 .search-frame {
-    @media screen and(max-width: $tablet) {
         display: flex;
         align-items: center;
-    }
-    
 }
 
 .search-frame label {
-    @media screen and(max-width: $tablet) {
         position: relative;
         width: 100%;
-    }
 }
 
 .search-input {
     cursor: pointer;
-    @media screen and(max-width: $tablet) {
-        font-size: 14px;
-        width: 100%;
-        color: var(--white-color);
-        background-color: transparent;
-        border: 0;
-        border-bottom: 0.5px solid var(--white-color);
-        outline: none;
-    }
+    font-size: 14px;
+    width: 100%;
+    color: var(--white-color);
+    background-color: transparent;
+    border: 0;
+    border-bottom: 0.5px solid var(--white-color);
+    outline: none;
 }
 
 .search-input::placeholder {
@@ -107,12 +92,9 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
+    width: 12px;
+    height: 12px;
     transition: transform 1s cubic-bezier(.4, 0, .2, 1);
-
-    @media screen and(max-width: $tablet) {
-        width: 12px;
-        height: 12px;
-    }
 }
 
 .search-icon {
