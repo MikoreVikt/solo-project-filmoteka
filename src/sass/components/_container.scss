@@ -2,8 +2,7 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px;
 
 
     // breakpoint: 480px / 768px / 1200px
@@ -14,6 +13,7 @@
 
     @media screen and (min-width: $tablet) {
         max-width: $tablet;
+        padding: 0 32px;
     }
 
     @media screen and (min-width: $desktop) {

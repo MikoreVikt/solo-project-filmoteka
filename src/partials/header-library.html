@@ -1,10 +1,11 @@
-<header class="header-home">
+<header class="header-library">
     <div class="container">
         <div class="links-frame">
             <a class="header-logo" href="./index.html">
                 <svg width="24" height="24">
                     <use href="./images/sprite.svg#logo"></use>
                 </svg>
+                <h3>Filmoteka</h3>
             </a>
             <nav>
                 <ul class="header__links">
@@ -13,15 +14,13 @@
                 </ul>
             </nav>
         </div>
-        <div class="search-frame">
-            <label>
-                <input class="search-input" type="text" placeholder="Movie search">
-                <button class="search-btn">
-                    <svg class="search-icon" width="12" height="12">
-                        <use href="./images/sprite.svg#search"></use>
-                    </svg>
-                </button>
-            </label>
-        </div>
+        <ul class="library-list">
+            <li class="library-item">
+                <button class="library__btn watched library__btn-current">watched</button>
+            </li>
+            <li class="library-item">
+                <button class="library__btn queue">queue</button>
+            </li>
+        </ul>
     </div>
 </header>
