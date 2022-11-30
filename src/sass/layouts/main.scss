@@ -1,14 +1,77 @@
 .gallery {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 20px;
+    flex-wrap: wrap;
+    gap: var(--indent);
+
+    @media screen and (min-width: $tablet) and (max-width: 1279px) {
+        --indent: 32px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        --indent: 16px;
+    }
 }
 
 .item {
-    width: 280px;
-    height: 443px;
-    background-color: beige;
+    --item: 1;
+    overflow: hidden;
+    border-radius: 5px;
+    flex-basis: calc((100% - var(--indent) * (var(--item) - 1)) / var(--item));
+    transition: box-shadow var(--anim-standart), transform var(--anim-standart);
+
+    @media screen and (min-width: $tablet) and (max-width: 1279px) {
+        --item: 2;
+    }
+
+    @media screen and (min-width: $desktop) {
+        --item: 3;
+        margin-bottom: 16px;
+    }
+
+    &:hover,
+    &:focus {
+        // box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 10px;
+        transform: scale(1.05);
+        transition: var(--anim-standart);
+    }
+}
+
+.item__img {
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item__img-frame {
+    margin-bottom: 10px;
+    height: 402px;
+    
+    @media screen and (min-width: $tablet) {
+        height: 455px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        height: 574px;
+    }
+}
+
+.item__text {
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--bg-orange-color);
+
+    @media screen and(min-width: $tablet) {
+        line-height: 16px;
+    }
+
+    @media screen and(min-width: $desktop) {
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+.item__text.title {
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    color: var(--black-color);
 }
 

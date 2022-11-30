@@ -21,7 +21,17 @@ async function createGallery(page) {
 createGallery(page);
 
 function getApi(page) {
-  fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`).then(
+  return fetch(
+    `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
+  ).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  });
+}
+function getGenres() {
+  return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`).then(
     response => {
       if (!response.ok) {
         throw new Error(response.status);
@@ -29,14 +39,6 @@ function getApi(page) {
       return response.json();
     }
   );
-}
-function getGenres() {
-  fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
 }
 
 function createMarkup(data) {
@@ -47,24 +49,20 @@ function createMarkup(data) {
         const rating = vote_average.toFixed(1);
         const src = imgHttps + poster_path;
         return `
-            <li class="gallery__item card-set">
-                <a class="link" href="">
-                <div class="img-wrap">
+            <li class="item">
+                <a class="item__link" href="">
+                <div class="item__img-frame">
                     <img
-                    width="280"
-                    class="gallery__img"
+                    class="item__img"
                     data-id="${id}"
                     src=${src}
                     alt="${title}"
                     loading="lazy"
                     />
                 </div>
-                <div class="gallary-wrapper">
-                    <h2 class="gallery__title">${title}</h2>
-                    <div class="gallery__wrap">
-                    <p class="gallery__ganres">${genre_name} | ${date}</p>
-                    <p class="gallery__rating">${rating}</p>
-                    </div>
+                <div class="item__text-frame">
+                    <h3 class="item__text title">${title}</h3>
+                    <h3 class="item__text">${genre_name} | ${date}</h3>
                 </div>
                 </a>
             </li>
