@@ -80,9 +80,47 @@
     }
 }
 
+@keyframes icon {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(36deg);
+    }
+    20% {
+        transform: rotate(72deg);
+    }
+    30% {
+        transform: rotate(108deg);
+    }
+    40% {
+        transform: rotate(144deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    60% {
+        transform: rotate(216deg);
+    }
+    70% {
+        transform: rotate(252deg);
+    }
+    80% {
+        transform: rotate(288deg);
+    }
+    90% {
+        transform: rotate(324deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .header-logo svg {
-    width: 24px;
-    height: 24px;
+    animation-name: icon;
+    animation-timing-function: ease;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
 }
 
 .header-logo h3 {
@@ -107,9 +145,13 @@
     text-transform: uppercase;
 }
 
-.header-link:hover,
-.header-link:focus {
-    color: var(--red-color);
+.header-link {
+    transition: color var(--anim-standart);
+
+    &:hover,
+    &:focus {
+        color: var(--bg-orange-color);
+    }
 }
 
 .current {
@@ -157,6 +199,7 @@
     border: 0;
     border-bottom: 0.5px solid var(--white-color);
     outline: none;
+    transition: border var(--anim-standart);
 
     @media screen and(min-width: $tablet) {
         width: 336px;
@@ -165,11 +208,16 @@
     @media screen and(min-width: $desktop) {
         width: 394px;
     }
-}
 
-.search-input::placeholder {
-    padding-left: 2px;
-    color: var(--white-color);
+    &::placeholder {
+        padding-left: 2px;
+        color: var(--white-color);
+    }
+
+    &:hover,
+    &:focus {
+        border-color: var(--bg-orange-color);
+    }
 }
 
 .search-btn {
@@ -184,11 +232,11 @@
     width: 12px;
     height: 12px;
     transition: transform 1s cubic-bezier(.4, 0, .2, 1);
-}
 
-.search-btn:hover .search-icon,
-.search-btn:focus .search-icon {
-    transform: scale(1.5) rotate(360deg);
+    &:hover .search-icon,
+    &:focus .search-icon {
+        transform: scale(1.5) rotate(360deg);
+    }
 }
 
 .search-icon {
