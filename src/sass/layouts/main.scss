@@ -1,0 +1,14 @@
+.gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+}
+
+.item {
+    width: 280px;
+    height: 443px;
+    background-color: beige;
+}
+
