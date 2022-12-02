@@ -8,6 +8,9 @@
     background-color: var(--white-color);
     border-radius: 5px;
 
+    @media screen and(max-width: $tablet) {
+        top: 500px;
+    }
     @media screen and(min-width: $tablet) {
         max-width: 704px;
         max-height: 552px;
