@@ -2,9 +2,10 @@ const galleryRef = document.querySelector('.gallery');
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '14ce8915ef52d801924d89668f2ca827';
+let imgHttps = 'https://image.tmdb.org/t/p/w500/';
+let src;
 
 let page = 1;
-let imgHttps = 'https://image.tmdb.org/t/p/w500/';
 
 async function createGallery(page) {
   try {
@@ -49,7 +50,7 @@ function createMarkup(data) {
         const rating = vote_average.toFixed(1);
         const src = imgHttps + poster_path;
         return `
-            <li class="item">
+            <li class="item" data-id="${id}">
                 <a class="item__link" href="">
                 <div class="item__img-frame">
                     <img
