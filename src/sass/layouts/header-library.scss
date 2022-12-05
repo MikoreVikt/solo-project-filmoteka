@@ -1,7 +1,7 @@
 .header-library {
     height: 230px;
     padding-top: 40px;
-    padding-bottom: 60px;
+    padding-bottom: 62px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -21,7 +21,6 @@
     }
 
     @media screen and(min-width: $tablet) {
-        height: 219px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/library/tablet/header-library_768.jpg");
 
         @media(min-device-pixel-ratio: 2),
@@ -39,7 +38,6 @@
     }
 
     @media screen and(min-width: $desktop) {
-        height: 216px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/library/desktop/header-library_1280.jpg");
 
         @media(min-device-pixel-ratio: 2),
@@ -55,6 +53,14 @@
             background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("../images/library/desktop/header-library_1280@3x.jpg");
         }
     }
+}
+
+.links-frame.lbr {
+    margin-bottom: 60px;
+    
+        @media screen and(min-width: $tablet) {
+            margin-bottom: 40px;
+        }
 }
 
 .library-list {

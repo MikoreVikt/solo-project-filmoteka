@@ -1,7 +1,7 @@
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '14ce8915ef52d801924d89668f2ca827';
 const HTTPS_IMG_ORIGINAL = 'https://image.tmdb.org/t/p/original';
-const HTTPS_IMG_W500 = 'https://image.tmdb.org/t/p/w500';
+// const HTTPS_IMG_W500 = 'https://image.tmdb.org/t/p/w500';
 let page = 1;
 let src;
 
@@ -20,7 +20,7 @@ function fetchAPI(page) {
     .catch(error => error.status);
 }
 
-function fetchGENRES() {
+function fetchGenres() {
   return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`)
     .then(response => {
       if (!response.ok) {
@@ -73,7 +73,7 @@ function createGalleryMarkup(data) {
 }
 
 async function createGallery(page) {
-  const genresArr = await fetchGENRES().then(data => data.genres);
+  const genresArr = await fetchGenres().then(data => data.genres);
   const filmsArr = await fetchAPI(page).then(data => data.results);
   getGenreNames(filmsArr, genresArr);
   createGalleryMarkup(filmsArr);

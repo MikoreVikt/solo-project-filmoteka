@@ -3,12 +3,8 @@
     flex-wrap: wrap;
     gap: var(--indent);
 
-    @media screen and (min-width: $tablet) and (max-width: 1279px) {
-        --indent: 32px;
-    }
-
-    @media screen and (min-width: $desktop) {
-        --indent: 16px;
+    @media screen and (min-width: $tablet) {
+        --indent: 30px;
     }
 }
 
@@ -19,20 +15,23 @@
     flex-basis: calc((100% - var(--indent) * (var(--item) - 1)) / var(--item));
     transition: box-shadow var(--anim-standart), transform var(--anim-standart);
 
-    @media screen and (min-width: $tablet) and (max-width: 1279px) {
+    &:hover,
+    &:focus {
+        transform: scale(1.05);
+        transition: var(--anim-standart);
+    }
+
+    @media screen and (min-width: $tablet) {
         --item: 2;
+
+        &:hover,
+        &:focus {
+            transform: scale(1.1);
+        }
     }
 
     @media screen and (min-width: $desktop) {
         --item: 3;
-        margin-bottom: 16px;
-    }
-
-    &:hover,
-    &:focus {
-        // box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 10px;
-        transform: scale(1.05);
-        transition: var(--anim-standart);
     }
 }
 
@@ -43,30 +42,13 @@
 
 .item__img-frame {
     margin-bottom: 10px;
-    height: 402px;
-    
-    @media screen and (min-width: $tablet) {
-        height: 455px;
-    }
-
-    @media screen and (min-width: $desktop) {
-        height: 574px;
-    }
+    height: 398px;
 }
 
 .item__text {
     font-size: 12px;
-    line-height: 14px;
+    line-height: 16px;
     color: var(--bg-orange-color);
-
-    @media screen and(min-width: $tablet) {
-        line-height: 16px;
-    }
-
-    @media screen and(min-width: $desktop) {
-        font-size: 20px;
-        line-height: 24px;
-    }
 }
 
 .item__text.title {
