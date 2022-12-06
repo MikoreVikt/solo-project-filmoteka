@@ -63,26 +63,8 @@
     }
 }
 
-// .modal__img-wrap {
-//     @media screen and(min-width: $mobile) {
-//         width: 240px;
-//         height: 357px;
-//     }
-
-//     @media screen and(min-width: $tablet) {
-//         width: 264px;
-//         height: 373.55px;
-//     }
-
-//     @media screen and(min-width: $desktop) {
-//         width: 375px;
-//         height: 478px;
-//     }
-// }
-
 .modal__img {
-    object-fit: cover;
-    border-radius: 4px;
+    border-radius: 5px;
     
     @media screen and(min-width: $mobile) {
         width: 240px;

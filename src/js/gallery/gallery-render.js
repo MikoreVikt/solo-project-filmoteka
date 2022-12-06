@@ -71,7 +71,7 @@ function createGalleryMarkup(data) {
     .join('');
 }
 
-async function createGallery(page) {
+export async function createGallery(page) {
   const genresArr = await fetchGenres().then(data => data.genres);
   const filmsArr = await fetchAPI(page).then(data => data.results);
   getGenreNames(filmsArr, genresArr);
