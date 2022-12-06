@@ -14,10 +14,10 @@ function clickOnArrowBtnPrev() {
     currentActiveBtn.classList.remove('current-page');
   }
   currentActiveBtn.previousElementSibling.classList.add('current-page');
-  page -= 1;
-  validation();
+  const pageNum = Number(currentActiveBtn.textContent) - 1;
+  validation(pageNum);
   createPrevBtn();
-  createGallery(page);
+  createGallery(pageNum);
 }
 
 function clickOnArrowBtnNext() {
@@ -27,7 +27,8 @@ function clickOnArrowBtnNext() {
     currentActiveBtn.classList.remove('current-page');
   }
   currentActiveBtn.nextElementSibling.classList.add('current-page');
-  const pageNum = Number(page) + 1;
+  const pageNum = Number(currentActiveBtn.textContent) + 1;
+  validation(pageNum);
   createNextBtn();
   createGallery(pageNum);
 }
@@ -40,7 +41,7 @@ function clickOnBtnNum(e) {
   }
   e.target.classList.add('current-page');
   page = e.target.textContent;
-  validation();
+  validation(page);
   createPrevBtn();
   createNextBtn();
   createGallery(page);
@@ -79,7 +80,7 @@ function createNextBtn() {
   }
 }
 
-function validation() {
+function validation(page) {
   if (Number(page) === 1) {
     getEl('.pagination__btn.prev').classList.add('not-active');
   } else {
