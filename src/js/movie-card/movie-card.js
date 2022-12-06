@@ -1,6 +1,7 @@
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '14ce8915ef52d801924d89668f2ca827';
 const HTTPS_IMG_ORIGINAL = 'https://image.tmdb.org/t/p/original';
+let src;
 
 const getEl = selector => document.querySelector(selector);
 

@@ -1,7 +1,6 @@
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '14ce8915ef52d801924d89668f2ca827';
 const HTTPS_IMG_ORIGINAL = 'https://image.tmdb.org/t/p/original';
-// const HTTPS_IMG_W500 = 'https://image.tmdb.org/t/p/w500';
 let page = 1;
 let src;
 
