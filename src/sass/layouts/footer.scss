@@ -72,11 +72,13 @@
 .footer__modal span {
     color: var(--main-text-second-color);
     text-decoration: underline;
+    transition: all var(--anim-standart);
 }
 
 .footer__modal span:hover,
 .footer__modal span:focus {
-    color: var(--red-color);
+    color: var(--bg-orange-color);
     text-decoration: none;
+    transition: all var(--anim-standart);
 }
 
