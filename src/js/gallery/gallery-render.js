@@ -72,6 +72,11 @@ function createGalleryMarkup(data) {
 }
 
 export async function createGallery(page) {
+  if (localStorage.getItem('current-page-number')) {
+    page = localStorage.getItem('current-page-number');
+  } else {
+    page = 1;
+  }
   const genresArr = await fetchGenres().then(data => data.genres);
   const filmsArr = await fetchAPI(page).then(data => data.results);
   getGenreNames(filmsArr, genresArr);

@@ -1,11 +1,14 @@
 import { createGallery } from '../gallery/gallery-render';
 
 const getEl = selector => document.querySelector(selector);
-let page = 1;
+let page = Number(localStorage.getItem('current-page-number')) || 1;
 
 getEl('.pagination__btn-wrap').addEventListener('click', clickOnBtnNum);
 getEl('.pagination__btn.prev').addEventListener('click', clickOnArrowBtnPrev);
 getEl('.pagination__btn.next').addEventListener('click', clickOnArrowBtnNext);
+
+activePage();
+validation(page);
 
 function clickOnArrowBtnPrev() {
   getEl('.gallery').innerHTML = '';
@@ -15,9 +18,11 @@ function clickOnArrowBtnPrev() {
   }
   currentActiveBtn.previousElementSibling.classList.add('current-page');
   const pageNum = Number(currentActiveBtn.textContent) - 1;
-  validation(pageNum);
+  localStorage.setItem('current-page-number', pageNum);
+  validation(Number(localStorage.getItem('current-page-number')) || 1);
   createPrevBtn();
-  createGallery(pageNum);
+  activePage();
+  createGallery(Number(localStorage.getItem('current-page-number')) || 1);
 }
 
 function clickOnArrowBtnNext() {
@@ -28,9 +33,11 @@ function clickOnArrowBtnNext() {
   }
   currentActiveBtn.nextElementSibling.classList.add('current-page');
   const pageNum = Number(currentActiveBtn.textContent) + 1;
-  validation(pageNum);
+  localStorage.setItem('current-page-number', pageNum);
+  validation(Number(localStorage.getItem('current-page-number')) || 1);
   createNextBtn();
-  createGallery(pageNum);
+  activePage();
+  createGallery(Number(localStorage.getItem('current-page-number')) || 1);
 }
 
 function clickOnBtnNum(e) {
@@ -41,10 +48,12 @@ function clickOnBtnNum(e) {
   }
   e.target.classList.add('current-page');
   page = e.target.textContent;
-  validation(page);
+  localStorage.setItem('current-page-number', page);
+  validation(Number(localStorage.getItem('current-page-number')) || 1);
   createPrevBtn();
   createNextBtn();
-  createGallery(page);
+  activePage();
+  createGallery(Number(localStorage.getItem('current-page-number')) || 1);
 }
 
 function createPrevBtn() {
@@ -85,5 +94,18 @@ function validation(page) {
     getEl('.pagination__btn.prev').classList.add('not-active');
   } else {
     getEl('.pagination__btn.prev').classList.remove('not-active');
+  }
+}
+
+function activePage() {
+  const locPageNum = localStorage.getItem('current-page-number');
+  const btnArr = document.querySelectorAll('.pagination__btn.num');
+  const currentActiveBtn = document.querySelector('.current-page');
+  const btnNumText = [...btnArr].find(
+    btn => Number(btn.textContent) === Number(locPageNum)
+  );
+  if (currentActiveBtn && btnNumText) {
+    currentActiveBtn.classList.remove('current-page');
+    btnNumText.classList.add('current-page');
   }
 }
