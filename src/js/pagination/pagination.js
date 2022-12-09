@@ -12,7 +12,9 @@ validation(page);
 
 function clickOnArrowBtnPrev() {
   getEl('.gallery').innerHTML = '';
-  const currentActiveBtn = document.querySelector('.current-page');
+  const currentActiveBtn =
+    document.querySelector('.current-page') ||
+    Number(localStorage.getItem('current-page-number'));
   if (currentActiveBtn) {
     currentActiveBtn.classList.remove('current-page');
   }
@@ -27,7 +29,9 @@ function clickOnArrowBtnPrev() {
 
 function clickOnArrowBtnNext() {
   getEl('.gallery').innerHTML = '';
-  const currentActiveBtn = document.querySelector('.current-page');
+  const currentActiveBtn =
+    document.querySelector('.current-page') ||
+    Number(localStorage.getItem('current-page-number'));
   if (currentActiveBtn) {
     currentActiveBtn.classList.remove('current-page');
   }
