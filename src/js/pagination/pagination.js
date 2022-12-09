@@ -18,9 +18,15 @@ function clickOnArrowBtnPrev() {
   if (currentActiveBtn) {
     currentActiveBtn.classList.remove('current-page');
   }
-  currentActiveBtn.previousElementSibling.classList.add('current-page');
-  const pageNum = Number(currentActiveBtn.textContent) - 1;
-  localStorage.setItem('current-page-number', pageNum);
+  if (Number(currentActiveBtn.textContent) !== Number(1)) {
+    const pageNum = Number(currentActiveBtn.textContent) - 1;
+    localStorage.setItem('current-page-number', pageNum);
+    currentActiveBtn.previousElementSibling.classList.add('current-page');
+  } else {
+    const pageNum = 1;
+    localStorage.setItem('current-page-number', pageNum);
+    currentActiveBtn.classList.add('current-page');
+  }
   validation(Number(localStorage.getItem('current-page-number')) || 1);
   createPrevBtn();
   activePage();
