@@ -88,6 +88,7 @@
     background-color: var(--bg-grey-color);
     border-radius: 5px;
     cursor: pointer;
+    transition: all var(--anim-standart);
 
     &.num {
         font-weight: 500;
@@ -106,6 +107,7 @@
         color: var(--white-color);
         fill: var(--white-color);
         background-color: var(--bg-orange-color);
+        transition: all var(--anim-standart);
     }
 }
 
