@@ -1,4 +1,5 @@
 import { createGallery } from '../gallery/gallery-render';
+import { searchQuery } from '../search/search';
 
 const getEl = selector => document.querySelector(selector);
 let page = Number(localStorage.getItem('current-page-number')) || 1;
@@ -8,7 +9,7 @@ getEl('.pagination__btn.prev').addEventListener('click', clickOnArrowBtnPrev);
 getEl('.pagination__btn.next').addEventListener('click', clickOnArrowBtnNext);
 
 activePage();
-validation(page);
+validFirstBtn(page);
 
 function clickOnArrowBtnPrev() {
   getEl('.gallery').innerHTML = '';
@@ -27,10 +28,17 @@ function clickOnArrowBtnPrev() {
     localStorage.setItem('current-page-number', pageNum);
     currentActiveBtn.classList.add('current-page');
   }
-  validation(Number(localStorage.getItem('current-page-number')) || 1);
+  validFirstBtn(Number(localStorage.getItem('current-page-number')) || 1);
   createPrevBtn();
   activePage();
-  createGallery(Number(localStorage.getItem('current-page-number')) || 1);
+  if (localStorage.getItem('current-memory-search')) {
+    searchQuery(
+      Number(localStorage.getItem('current-page-number')) || 1,
+      localStorage.getItem('current-memory-search')
+    );
+  } else {
+    createGallery(Number(localStorage.getItem('current-page-number')) || 1);
+  }
 }
 
 function clickOnArrowBtnNext() {
@@ -44,10 +52,17 @@ function clickOnArrowBtnNext() {
   currentActiveBtn.nextElementSibling.classList.add('current-page');
   const pageNum = Number(currentActiveBtn.textContent) + 1;
   localStorage.setItem('current-page-number', pageNum);
-  validation(Number(localStorage.getItem('current-page-number')) || 1);
+  validFirstBtn(Number(localStorage.getItem('current-page-number')) || 1);
   createNextBtn();
   activePage();
-  createGallery(Number(localStorage.getItem('current-page-number')) || 1);
+  if (localStorage.getItem('current-memory-search')) {
+    searchQuery(
+      Number(localStorage.getItem('current-page-number')) || 1,
+      localStorage.getItem('current-memory-search')
+    );
+  } else {
+    createGallery(Number(localStorage.getItem('current-page-number')) || 1);
+  }
 }
 
 function clickOnBtnNum(e) {
@@ -59,11 +74,18 @@ function clickOnBtnNum(e) {
   e.target.classList.add('current-page');
   page = e.target.textContent;
   localStorage.setItem('current-page-number', page);
-  validation(Number(localStorage.getItem('current-page-number')) || 1);
+  validFirstBtn(Number(localStorage.getItem('current-page-number')) || 1);
   createPrevBtn();
   createNextBtn();
   activePage();
-  createGallery(Number(localStorage.getItem('current-page-number')) || 1);
+  if (localStorage.getItem('current-memory-search')) {
+    searchQuery(
+      Number(localStorage.getItem('current-page-number')) || 1,
+      localStorage.getItem('current-memory-search')
+    );
+  } else {
+    createGallery(Number(localStorage.getItem('current-page-number')) || 1);
+  }
 }
 
 function createPrevBtn() {
@@ -99,7 +121,7 @@ function createNextBtn() {
   }
 }
 
-function validation(page) {
+export function validFirstBtn(page) {
   if (Number(page) === 1) {
     getEl('.pagination__btn.prev').classList.add('not-active');
   } else {
@@ -107,7 +129,7 @@ function validation(page) {
   }
 }
 
-function activePage() {
+export function activePage() {
   const locPageNum = localStorage.getItem('current-page-number');
   const btnArr = document.querySelectorAll('.pagination__btn.num');
   const currentActiveBtn = document.querySelector('.current-page');

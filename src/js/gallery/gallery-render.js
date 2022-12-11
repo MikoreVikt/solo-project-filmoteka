@@ -6,6 +6,8 @@ let src;
 
 const getEl = selector => document.querySelector(selector);
 
+getEl('.header-logo').addEventListener('click', clockOnLogo);
+
 createGallery(page);
 
 function fetchAPI(page) {
@@ -81,4 +83,11 @@ export async function createGallery(page) {
   const filmsArr = await fetchAPI(page).then(data => data.results);
   getGenreNames(filmsArr, genresArr);
   createGalleryMarkup(filmsArr);
+}
+
+function clockOnLogo() {
+  localStorage.removeItem('current-memory-search');
+  localStorage.removeItem('current-page-number');
+  page = 1;
+  createGallery(page);
 }
