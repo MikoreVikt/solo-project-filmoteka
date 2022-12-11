@@ -8,8 +8,6 @@ const getEl = selector => document.querySelector(selector);
 
 getEl('.header-logo').addEventListener('click', clockOnLogo);
 
-createGallery(page);
-
 function fetchAPI(page) {
   return fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`)
     .then(response => {

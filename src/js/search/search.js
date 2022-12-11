@@ -1,6 +1,7 @@
 import { fetchGenres } from '../gallery/gallery-render';
 import { getGenreNames } from '../gallery/gallery-render';
 import { createGalleryMarkup } from '../gallery/gallery-render';
+import { createGallery } from '../gallery/gallery-render';
 import { activePage } from '../pagination/pagination';
 import { validFirstBtn } from '../pagination/pagination';
 
@@ -12,6 +13,8 @@ let name;
 const getEl = selector => document.querySelector(selector);
 
 getEl('.search-form').addEventListener('submit', onSubmit);
+
+galleryFromMemory();
 
 function fetchSearch(page, name) {
   return fetch(
@@ -47,4 +50,15 @@ function onSubmit(e) {
   validFirstBtn(page);
   activePage();
   searchQuery(page, name);
+}
+
+export function galleryFromMemory() {
+  if (localStorage.getItem('current-memory-search')) {
+    searchQuery(
+      Number(localStorage.getItem('current-page-number')) || 1,
+      localStorage.getItem('current-memory-search')
+    );
+  } else {
+    createGallery(Number(localStorage.getItem('current-page-number')) || 1);
+  }
 }

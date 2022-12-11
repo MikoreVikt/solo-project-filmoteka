@@ -1,5 +1,4 @@
-import { createGallery } from '../gallery/gallery-render';
-import { searchQuery } from '../search/search';
+import { galleryFromMemory } from '../search/search';
 
 const getEl = selector => document.querySelector(selector);
 let page = Number(localStorage.getItem('current-page-number')) || 1;
@@ -31,14 +30,7 @@ function clickOnArrowBtnPrev() {
   validFirstBtn(Number(localStorage.getItem('current-page-number')) || 1);
   createPrevBtn();
   activePage();
-  if (localStorage.getItem('current-memory-search')) {
-    searchQuery(
-      Number(localStorage.getItem('current-page-number')) || 1,
-      localStorage.getItem('current-memory-search')
-    );
-  } else {
-    createGallery(Number(localStorage.getItem('current-page-number')) || 1);
-  }
+  galleryFromMemory();
 }
 
 function clickOnArrowBtnNext() {
@@ -55,14 +47,7 @@ function clickOnArrowBtnNext() {
   validFirstBtn(Number(localStorage.getItem('current-page-number')) || 1);
   createNextBtn();
   activePage();
-  if (localStorage.getItem('current-memory-search')) {
-    searchQuery(
-      Number(localStorage.getItem('current-page-number')) || 1,
-      localStorage.getItem('current-memory-search')
-    );
-  } else {
-    createGallery(Number(localStorage.getItem('current-page-number')) || 1);
-  }
+  galleryFromMemory();
 }
 
 function clickOnBtnNum(e) {
@@ -78,14 +63,7 @@ function clickOnBtnNum(e) {
   createPrevBtn();
   createNextBtn();
   activePage();
-  if (localStorage.getItem('current-memory-search')) {
-    searchQuery(
-      Number(localStorage.getItem('current-page-number')) || 1,
-      localStorage.getItem('current-memory-search')
-    );
-  } else {
-    createGallery(Number(localStorage.getItem('current-page-number')) || 1);
-  }
+  galleryFromMemory();
 }
 
 function createPrevBtn() {
