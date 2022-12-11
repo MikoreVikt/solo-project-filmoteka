@@ -1,3 +1,4 @@
+import './js/search/search';
 import './js/gallery/gallery-render';
 import './js/movie-card/movie-card';
 import './js/scroll/scroll';

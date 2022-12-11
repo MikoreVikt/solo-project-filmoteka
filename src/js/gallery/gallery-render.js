@@ -19,7 +19,7 @@ function fetchAPI(page) {
     .catch(error => error.status);
 }
 
-function fetchGenres() {
+export function fetchGenres() {
   return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`)
     .then(response => {
       if (!response.ok) {
@@ -30,7 +30,7 @@ function fetchGenres() {
     .catch(error => error.status);
 }
 
-function getGenreNames(filmsArr, genresArr) {
+export function getGenreNames(filmsArr, genresArr) {
   filmsArr.forEach(film => {
     const names = film.genre_ids.map(id => {
       const objId = genresArr.find(genre => genre.id === id);
@@ -43,7 +43,7 @@ function getGenreNames(filmsArr, genresArr) {
   });
 }
 
-function createGalleryMarkup(data) {
+export function createGalleryMarkup(data) {
   return data
     .map(({ id, poster_path, original_title, release_date, genres }) => {
       const relise = release_date.slice(0, 4);
